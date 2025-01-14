@@ -22,13 +22,12 @@ def pregunta_10():
     """
     import pandas as pd
 
-    path_tbl0 = 'files/input/tbl0.tsv'
-    path_tbl2 = 'files/input/tbl2.tsv'
+    path = 'files/input/tbl0.tsv'
 
-    df_tbl0 = pd.read_csv(path_tbl0, sep='\t')
-    df_tbl2 = pd.read_csv(path_tbl2, sep='\t')
-    merged_df = pd.merge(df_tbl0, df_tbl2, on='c0')
+    df = pd.read_csv(path, sep='\t')
 
-    result = merged_df.groupby('c1')['c5b'].sum()
+    table = df.groupby('c1')['c2'].apply(lambda x: ':'.join(map(str, sorted(x)))).reset_index()
 
-    return result
+    table.set_index('c1', inplace=True)
+
+    return table
