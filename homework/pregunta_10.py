@@ -20,3 +20,15 @@ def pregunta_10():
     D                   1:2:3:5:5:7
     E   1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
+    import pandas as pd
+
+    path_tbl0 = 'files/input/tbl0.tsv'
+    path_tbl2 = 'files/input/tbl2.tsv'
+
+    df_tbl0 = pd.read_csv(path_tbl0, sep='\t')
+    df_tbl2 = pd.read_csv(path_tbl2, sep='\t')
+    merged_df = pd.merge(df_tbl0, df_tbl2, on='c0')
+
+    result = merged_df.groupby('c1')['c5b'].sum()
+
+    return result
