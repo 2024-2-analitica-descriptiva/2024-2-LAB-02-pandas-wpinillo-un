@@ -14,3 +14,11 @@ def pregunta_02():
     4
 
     """
+    import pandas as pd
+
+    path = 'files/input/tbl0.tsv'
+
+    df = pd.read_csv(path, sep='\t')
+    df_cols = len(df.columns)
+
+    return df_cols
