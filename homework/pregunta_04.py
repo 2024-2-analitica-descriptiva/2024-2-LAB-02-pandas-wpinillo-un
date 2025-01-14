@@ -20,3 +20,12 @@ def pregunta_04():
     E    4.785714
     Name: c2, dtype: float64
     """
+    import pandas as pd
+
+    path = 'files/input/tbl0.tsv'
+
+    df = pd.read_csv(path, sep='\t')
+    
+    average_c2 = df.groupby('c1')['c2'].mean()
+
+    return average_c2
